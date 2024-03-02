@@ -72,7 +72,8 @@ class CalculatorUnitTest {
         assertEquals(expected, calculator.sub(a, b));
     }
 
-    @ParameterizedTest(name = "Test multiplication of two numbers by long type {0}*{1}={2}")
+    @DisplayName("Test multiplication of two numbers by long type")
+    @ParameterizedTest(name = "{0}*{1}={2}")
     @CsvSource({
             "-30, 30, -900",
             "-10, -15, 150",
@@ -84,7 +85,8 @@ class CalculatorUnitTest {
         assertEquals(expected, calculator.mult(a, b));
     }
 
-    @ParameterizedTest(name = "Test multiplication of two numbers by double type {0}*{1}={2}")
+    @DisplayName("Test multiplication of two numbers by double type")
+    @ParameterizedTest(name = "{0}*{1}={2}")
     @CsvSource({
             "-16.34, 8.2, -134.0",
             "-33.75, -16.34, 551.0",
@@ -96,7 +98,8 @@ class CalculatorUnitTest {
         assertEquals(expected, calculator.mult(a, b));
     }
 
-    @ParameterizedTest(name = "Test division of two numbers by long type {0}/{1}={2}")
+    @DisplayName("Test division of two numbers by long type")
+    @ParameterizedTest(name = "{0}/{1}={2}")
     @CsvSource({
             "-30, 30, -1",
             "-15, -15, 1",
@@ -107,7 +110,8 @@ class CalculatorUnitTest {
         assertEquals(expected, calculator.div(a, b));
     }
 
-    @ParameterizedTest(name = "Test division of two numbers by double type {0}/{1}={2}")
+    @DisplayName("Test division of two numbers by double type")
+    @ParameterizedTest(name = "{0}/{1}={2}")
     @CsvSource({
             "-16.48, 8.24, -2.0",
             "-65.36, -16.34, 4.0",
@@ -124,7 +128,8 @@ class CalculatorUnitTest {
         assertThrows(NumberFormatException.class, () -> calculator.div(10, 0));
     }
 
-    @ParameterizedTest(name = "Test number raised to the power of the second argument {0}^{1}={2}")
+    @DisplayName("Test number raised to the power of the second argument")
+    @ParameterizedTest(name = "{0}^{1}={2}")
     @CsvSource({
             "-3.0, 6.6, 729",
             "-15, 1, -15",
@@ -136,7 +141,8 @@ class CalculatorUnitTest {
         assertEquals(expected, calculator.pow(a, b));
     }
 
-    @ParameterizedTest(name = "Test square root of a double value sqrt({1})={0}")
+    @DisplayName("Test square root of a double value")
+    @ParameterizedTest(name = "sqrt({1})={0}")
     @CsvSource({
             "0, 0",
             "12, 144",
@@ -148,37 +154,43 @@ class CalculatorUnitTest {
         assertEquals(expected, calculator.sqrt(input));
     }
 
-    @ParameterizedTest(name = "Test sin of an angle sin({0})=0")
+    @DisplayName("Test sin of an angle")
+    @ParameterizedTest(name = "sin({0})=0")
     @ValueSource(doubles = { 0, Math.PI, 2 * Math.PI })
     void testSin(double input) {
         assertEquals(0, Math.round(calculator.sin(input)));
     }
 
-    @ParameterizedTest(name = "Test cos of an angle cos({0})=1")
+    @DisplayName("Test cos of an angle")
+    @ParameterizedTest(name = "cos({0})=1")
     @ValueSource(doubles = { 0, 2 * Math.PI })
     void testCos(double input) {
         assertEquals(1, calculator.cos(input));
     }
 
-    @ParameterizedTest(name = "Test tg of an angle tg({0})=0")
+    @DisplayName("Test tg of an angle")
+    @ParameterizedTest(name = "tg({0})=0")
     @ValueSource(doubles = { 0, Math.PI, 2 * Math.PI })
     void testTg(double input) {
         assertEquals(0, Math.round(calculator.tg(input)));
     }
 
-    @ParameterizedTest(name = "Test ctg of an angle ctg({0})=0")
+    @DisplayName("Test ctg of an angle")
+    @ParameterizedTest(name = "ctg({0})=0")
     @ValueSource(doubles = { Math.PI / 4, 5 * Math.PI / 4 })
     void testCtg(double input) {
         assertEquals(1, Math.round(calculator.ctg(input)));
     }
 
-    @ParameterizedTest(name = "Test positive value {0}")
+    @DisplayName("Test positive value")
+    @ParameterizedTest(name = "{0}")
     @ValueSource(longs = {1L, 42L, 8690L, 6273L, 35636L, Long.MAX_VALUE})
     void testPositiveValue(long value) {
         assertTrue(calculator.isPositive(value));
     }
 
-    @ParameterizedTest(name = "Test negative value {0}")
+    @DisplayName("Test negative value")
+    @ParameterizedTest(name = "{0}")
     @ValueSource(longs = {-1L, -42L, -8690L, -6273L, -35636L, Long.MIN_VALUE})
     void testNegativeValue(long value) {
         assertFalse(calculator.isPositive(value));
